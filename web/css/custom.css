@@ -1,0 +1,13 @@
+body {font-size: 24px;word-break:break-word}
+.btn{font-size:1.25rem}
+.navbar-inner.container{margin: 0 auto;max-width:1148px;padding-left: 40px}
+.navbar-toggler{display:none}
+label{display:block;font-size:20px;}
+@media (max-width:575.98px){
+  body {font-size: 22px;word-break:break-word}
+  h1,.h1 {font-size:28px}
+  h2,.h2 {font-size:24px}
+  h3,.h3 {font-size:22px}
+  .btn{font-size:1rem}
+  .custom-select{display:block;}
+}

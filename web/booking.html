@@ -1,89 +1,71 @@
-<div align="center"><h3>Buchungsmaske</h3></div>
-<p></p>
+<h1>Buchungsmaske</h1>
 <form id="booking">
+  <div class="form-group row">
+    <label for="institution" class="col-4 col-sm-2 col-form-label">Standort:</label>
+    <select id="institution" name="institution" class="custom-select col-6" required="required" onchange="javascript:getAreas()">
+      <option>Bitte wählen ...</option>
+    </select>
+  </div>
+  <div class="form-group row">
+    <label for="area" class="col-4 col-sm-2 col-form-label">Bereich:</label>
+    <select id="area" name="area" class="custom-select col-6 ">
+      <option>Bitte wählen ...</option>
+    </select>
+  </div>
 
-        <div class="form-group row">
-            <label for="institution" class="col-4 col-form-label">Standort</label>
-            <div class="col-8">
-                <select id="institution" name="institution" class="custom-select" required="required" onchange="javascript:getAreas()">
-                   <option>Bitte wählen...</option>
-                </select>
-            </div>
+  <div class="form-group row">
+    <label for="fitting" class="col-4 col-sm-2 col-form-label">Ausstattung:</label>
+    <select id="fitting" name="fitting" class="custom-select col-6 " size="4" multiple="multiple">
+      <option value="ohne Strom">ohne Stromanschluss</option>
+      <option value="PC">mit PC</option>
+      <option value="kein PC">ohne PC</option>
+      <option value="LAN">mit LAN-Anschluss</option>
+    </select>
+  </div>
+
+  <div class="form-group row">
+    <label for="timeslots" class="col-12 col-sm-2 col-form-label">Zeitpunkt:</label>
+    <div class="col-8 col-sm-10" id="timeslots">
+      <div class="form-group row">
+        <label for="from_date" class="col-4 col-sm-1">Datum:</label>
+        <div class="col-6 col-sm-2">
+          <input id="from_date" name="from_date" type="date"/>
         </div>
-        <div class="form-group row">
-            <label for="area" class="col-4 col-form-label">Bereich</label>
-            <div class="col-8">
-                <select id="area" name="area" class="custom-select">
-                    <option>Bitte wählen...</option>
-                </select>
-            </div>
+        <label for="from_time" class="col-4 col-sm-2">Uhrzeit von:</label>
+        <div class="col-6 col-sm-1">
+          <input id="from_time" name="from_time" type="time"/>
         </div>
-
-        <div class="form-group row">
-            <label for="fitting" class="col-4 col-form-label">Ausstattung</label>
-            <div class="col-8">
-                <select id="fitting" name="fitting" class="custom-select" size="4" multiple="multiple">
-                    <option value="ohne Strom">ohne Stromanschluss</option>
-                    <option value="PC">mit PC</option>
-                    <option value="kein PC">ohne PC</option>
-                    <option value="LAN">mit LAN-Anschluss</option>
-                </select>
-
-            </div>
+        <label for="until_time" class="col-4 col-sm-2">Uhrzeit bis:</label>
+        <div class="col-6 col-sm-1">
+          <input id="until_time" name="until_time" type="time"/>
         </div>
+      </div>
+    </div>
+  </div>
 
+  <input type="hidden" name="readernumber" id="readernumber"/>
+  <input type="hidden" name="token" id="token"/>
 
-        <div class="form-group row">
-            <label for="area" class="col-4 col-form-label">Zeitpunkt</label>
-            <div class="col-8">
-                <div class="form-group row">
+  <script>
+	  $("#readernumber").val(readernumber);
+	  $("#token").val(token);
 
-                    <label for="from_date" class="col-1">Datum</label>
-                    <div class="col-3">
-                        <input id="from_date" name="from_date" type="date"/>
-                    </div>
+	  $.ajax({
+		  url: proto + '://' + url + '/booking/institutions',
+		  type: 'get',
+		  success: function (data) {
 
-                    <label for="from_time" class="col-2">Uhrzeit von</label>
-                    <div class="col-2">
-                        <input id="from_time" name="from_time" type="time" />
-                    </div>
+			  data.split("#").forEach(function (e) {
+				  $("#institution").append("<option value=\"" + e + "\">" + e + "</option>");
+			  });
+		  }
+	  });
+  </script>
 
-                    <label for="until_time" class="col-2">Uhrzeit bis</label>
-                    <div class="col-2">
-                        <input id="until_time" name="until_time" type="time"/>
-                    </div>
-
-
-
-                </div>
-            </div>
-        </div>
-
-    <input type="hidden" name="readernumber" id="readernumber"/>
-    <input type="hidden" name="token" id="token"/>
-
-    <script>
-        $("#readernumber").val(readernumber);
-        $("#token").val(token);
-
-        $.ajax({
-            url: proto+'://'+url+'/booking/institutions',
-            type: 'get',
-            success: function(data) {
-
-                data.split("#").forEach(function(e){
-                    $("#institution").append("<option value=\""+e+"\">"+e+"</option>");
-                });
-            }
-        });
-
-    </script>
+  <div class="form-group">
+    <div class="offset-2 col-8">
+      <button class="btn btn-primary" onclick="javascript:do_reservation()">Arbeitsplatz buchen</button>
+    </div>
+  </div>
 </form>
-
-        <div class="form-group row">
-            <div class="offset-4 col-8">
-                <button class="btn btn-primary" onclick="javascript:do_reservation()">Arbeitsplatz buchen</button>
-            </div>
-        </div>
-
 
