@@ -25,7 +25,8 @@
     <script>
 
         //var url = "seats.ub.uni-leipzig.de/api";
-        var url = "172.18.85.108:12105";
+        //var url = "172.18.85.108:12105";
+        var url = "localhost:12105";
         var proto = "http";
 
         var readernumber = "";
@@ -56,18 +57,24 @@
                 type: 'post',
                 data: $('#loginform').serialize(),
                 success: function (data) {
-                    if(data!="null") {
-                            token = data;
+                    if(data.token!="null") {
+                            token = data.token;
                             $("#startdiv").removeClass("starter-template");
-                            $("#startdiv").load("booking.html");
+                            //$("#startdiv").load("booking.html");
+                            $("#startdiv").load("hygiene.html");
                         }
                     else
-                        alert("Ihre Logindaten sind leider falsch.");
+                        alert(data.msg);
                 }
             });
 
+
             readernumber = $("#readernumber").val();
 
+        }
+
+        function hygiene_readed() {
+            $("#startdiv").load("booking.html");
         }
 
         function do_reservation() {
@@ -83,7 +90,7 @@
             var w2 = $("#until_time").attr("max");
 
             if(t1<v1||t1>v2||t2<w1||t2>w2||t2<t1||d1==""||t1==t2) {
-                alert("Zeit-Fehler!");
+                alert("Bitte überprüfen Sie die ausgewählten Zeiten!");
                 return;
             }
 
@@ -98,7 +105,12 @@
                     booked_workspace = jsondata.workspaceId;
                     bookingCode = jsondata.bookingCode;
                     email = jsondata.email;
+                    msg = jsondata.message;
 
+                    if(msg=="concurrently_booking") {
+                        alert("Sie haben zur gleichen Zeit bereits eine bestehende Buchung!");
+                        return;
+                    }
                     if(booked_workspace=="") alert("Leider konnte kein freier Platz zu Ihren Konditionen gefunden werden!");
                     else {
                         $("#startdiv").addClass("starter-template");
@@ -139,7 +151,7 @@
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <div class="navbar-inner container">
-    <a class="navbar-brand" href="#">Arbeitsplatzbuchungssystem</a>
+        <a class="navbar-brand" href="#">Arbeitsplatzbuchungssystem <span style="font-size: 12px">v0.9.2</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
