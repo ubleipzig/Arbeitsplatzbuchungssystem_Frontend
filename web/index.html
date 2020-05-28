@@ -39,13 +39,17 @@
             $("#startdiv").load("login.html");
         }
 
+        function storno() {
+            $("#startdiv").load("storno.html");
+        }
+
         function logout() {
             $.ajax({
                url: proto+'://'+url+'/booking/logout',
                type: 'post',
                data: '{ "token": "'+token+'", "readernumber": "'+readernumber+'" }',
                 success: function (data) {
-                    $("#startdiv").load("login.html");
+                    document.location="index.html";
                 }
             });
         }
@@ -75,6 +79,20 @@
 
         function hygiene_readed() {
             $("#startdiv").load("booking.html");
+        }
+
+        function do_storno() {
+            $.ajax({
+                url: proto+'://'+url+'/booking/storno',
+                type: 'post',
+                data: $('#stornoform').serialize(),
+                success: function(data) {
+                    alert(data.message);
+                    if(data.message=="Ihre Buchung wurde gelöscht.") {
+                        document.location = "index.html";
+                    }
+                }
+            });
         }
 
         function do_reservation() {
@@ -151,7 +169,7 @@
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <div class="navbar-inner container">
-        <a class="navbar-brand" href="#">Arbeitsplatzbuchungssystem <span style="font-size: 12px">v0.9.2</span></a>
+        <a class="navbar-brand" href="#">Arbeitsplatzbuchungssystem <span style="font-size: 12px">v0.9.3</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -170,7 +188,7 @@
             <a class="btn btn-primary" href="javascript:reservation()">Einen Arbeitsplatz reservieren</a>
         </p>
         <p>
-            <a class="btn btn-primary" href="javascript:manage()">Eine Reservierung ändern/stornieren</a>
+            <a class="btn btn-primary" href="javascript:storno()">Eine Reservierung stornieren</a>
         </p>
     </div>
 

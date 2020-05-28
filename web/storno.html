@@ -1,0 +1,28 @@
+<h1>Stornierung einer Buchung</h1>
+<p>Bitte geben Sie ihre Lesekartennummer, Passwort und den Buchungscode der Buchung, die Sie stornieren möchten an.</p>
+
+<form id="stornoform">
+    <div class="form-group">
+        <label for="readernumber">
+            Lesekartennummer:
+        </label>
+
+        <input type="text" id="readernumber" name="readernumber"/>
+    </div>
+    <div class="form-group">
+        <label for="password">
+            Passwort:
+        </label>
+        <input type="password" id="password" name="password"/>
+    </div>
+    <div class="form-group">
+        <label for="bookingcode">
+            Buchungscode:
+        </label>
+        <input type="text" id="bookingcode" name="bookingcode" size="80"/>
+    </div>
+
+
+</form>
+<button class="btn btn-primary" onclick="javascript:do_storno()">Stornieren</button>
+<button class="btn btn-primary" onclick="javascript:document.location='index.html'">Zurück</button>

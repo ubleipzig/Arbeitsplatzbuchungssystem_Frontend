@@ -1,14 +1,16 @@
-Gebuchter Arbeitsplatz: <div id="booked_workspace"/>
-Buchungssnummer: <div id="bookingCode"/>
+Gebuchter Arbeitsplatz: <span id="booked_workspace"/><br/>
+Buchungssnummer: <span id="bookingCode"/><br/>
 
-<br>
+<p></p>
 
-Eine Bestätigungsmail wurde an folgende Adresse versendet: <div id="email"/>
+Eine Bestätigungsmail wurde an folgende Adresse versendet: <span id="email"/><br/>
 
 <script>
     $("#booked_workspace").text(booked_workspace);
     $("#bookingCode").text(bookingCode);
     $("#email").text(email);
 </script>
+
+<p></p>
 
 <button class="btn btn-primary" onclick="javascript:logout()">Logout</button>
