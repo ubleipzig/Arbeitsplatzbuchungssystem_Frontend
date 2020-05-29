@@ -33,6 +33,14 @@ $# docker run --rm -p 3000:3000 --name seats seats:latest
 
 The image should report successfully _'Listening on port 3000'_. Go to your browser and type in: _localhost:3000_ to get output of the app.
 
+## Configuration
+
+Adjust the api uri to connecting the backend of the booking workstation software at file _js/app.js_  giving required parameter at 
+
+'''
+let api = new Api ("localhost:12105/booking");
+'''
+
 ## Production
 
 For production use it is necessary to include the **/public** folder only.
