@@ -29,7 +29,7 @@
       <div class="form-group row">
         <div class="col-12 col-sm-4">
           <label for="from_date">Datum:</label>
-          <input id="from_date" name="from_date" type="date"/>
+          <input id="from_date" name="from_date" type="date" onchange="javascript:api.check_date()" min="" max=""/>
         </div>
         <div class="col-6 col-sm-3">
           <label for="from_time">Uhrzeit von:</label>
@@ -54,6 +54,7 @@
 </div>
 <script>
   api.getLocations();
+  setDateInterval();
   $("#readernumber").val(api.readernumber);
   $("#token").val(api.token);
 </script>

@@ -23,6 +23,24 @@ class Api {
             }
         });
     }
+    check_date() {
+        var date = $("#from_date").val();
+        var institution = $("#institution").val();
+
+        $.ajax({
+            url: this.apiUri + '/checkdate',
+            type: 'post',
+            data: '{"date": "'+date+'", "institution": "'+institution+'"}',
+            success: function (data) {
+                if(data=="false")
+                {
+                    alert("Das ist ein Datum außerhalb der Öffnungszeiten!");
+                    $("#from_date").val("");
+                }
+            }
+
+        });
+    }
     selectLocation() {
         $.ajax({
             url: this.apiUri + '/areas?institution='+$("#institution").val(),
@@ -44,6 +62,8 @@ class Api {
                 $("#until_time").attr({"min": data.from, "max": data.until, "value": data.from});
             }
         });
+
+        $("#from_date").val("");
     }
     login() {
         $.ajax({
@@ -138,9 +158,29 @@ class Api {
 }
 
 // let api = new Api ("seats.ub.uni-leipzig.de/api/booking");
-// let api = new Api ("localhost:12105/booking");
-let api = new Api ("172.18.85.108:12105/booking");
+ let api = new Api ("localhost:12105/booking");
+//let api = new Api ("172.18.85.108:12105/booking");
 
+function setDateInterval() {
+
+    var mydate = new Date();
+    var day1 = mydate.getDate();
+    var month1 = mydate.getMonth()+1;
+    var year1 = mydate.getFullYear();
+
+    mydate.setDate(day1+7);
+    var day2 = mydate.getDate()
+    var month2 = mydate.getMonth()+1;
+    var year2 = mydate.getFullYear();
+
+    min = year1+"-"+("0"+month1).slice(-2)+"-"+("0"+day1).slice(-2);
+    max = year2+"-"+("0"+month2).slice(-2)+"-"+("0"+day2).slice(-2);
+
+    $("#from_date").attr({"min":min, "max":max});
+
+    alert(min);
+    alert(max);
+}
 
 function reservation() {
     $("#startdiv").load("login.html");
