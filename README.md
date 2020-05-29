@@ -4,6 +4,9 @@ Seats frontend contains the user interface for booking workstations at Leipzig U
 
 Contact: freitag@uni-leipzig.de or bdd_dev@ub.uni-leipzig.de
 
+Docker/NodeJS-Skeleton: morgnerf@ub.uni-leipzig.de
+
+
 ## Requirements
 
 There hasn't yet any special requirements running this project. All pages can be loaded at browser as standard html pages.
