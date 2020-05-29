@@ -1,14 +1,17 @@
 class Api {
+
     constructor(uri, protocoll = "http") {
         this.url = uri;
         this.proto = protocoll;
         this.apiUri = this._apiUri();
         this.readernumber = "";
         this.token ="";
+        this.booked_workspace = "";
+        this.bookingCode = "";
+        this.email = "";
     }
     getLocations() {
-        $("#readernumber").val(readernumber);
-        $("#token").val(token);
+
 
         $.ajax({
             url: this.apiUri + '/institutions',
@@ -49,7 +52,7 @@ class Api {
             data: $('#loginform').serialize(),
             success: function (data) {
                 if(data.token!="null") {
-                    this.token = data.token;
+                    api.token = data.token;
                     $("#startdiv").removeClass("starter-template");
                     //$("#startdiv").load("booking.html");
                     $("#startdiv").load("hygiene.html");
@@ -64,18 +67,14 @@ class Api {
         $.ajax({
             url: this.apiUri + '/logout',
             type: 'post',
-            data: '{ "token": "' + this.token + '", "readernumber": "'+ this.readernumber + '" }',
+            data: '{ "token": "' + api.token + '", "readernumber": "'+ api.readernumber + '" }',
             success: function (data) {
-                this.token = null;
+                api.token = null;
                 document.location="index.html";
             }
         });
     }
     setReservation() {
-        var booked_workspace = 0;
-        var bookingCode = 0;
-        var email = "";
-
         var d1 = $("#from_date").val();
 
         var t1 = $("#from_time").val();
@@ -98,16 +97,17 @@ class Api {
             success: function(data) {
 
                 var jsondata = $.parseJSON(data);
-                booked_workspace = jsondata.workspaceId;
-                bookingCode = jsondata.bookingCode;
-                email = jsondata.email;
-                msg = jsondata.message;
+                api.booked_workspace = jsondata.workspaceId;
+                api.bookingCode = jsondata.bookingCode;
+                api.email = jsondata.email;
+
+                var msg = jsondata.message;
 
                 if(msg == "concurrently_booking") {
                     alert("Sie haben zur gleichen Zeit bereits eine bestehende Buchung!");
                     return;
                 }
-                if (booked_workspace== "") {
+                if (api.booked_workspace== "") {
 
                     alert("Leider konnte kein freier Platz zu Ihren Konditionen gefunden werden!");
                 } else {
@@ -118,6 +118,7 @@ class Api {
             }
         });
     }
+
     setStorno() {
         $.ajax({
             url: this.apiUri + '/storno',

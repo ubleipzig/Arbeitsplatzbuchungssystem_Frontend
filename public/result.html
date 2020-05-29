@@ -6,9 +6,12 @@ Buchungssnummer: <span id="bookingCode"/><br/>
 Eine Bestätigungsmail wurde an folgende Adresse versendet: <span id="email"/><br/>
 
 <script>
-    $("#booked_workspace").text(booked_workspace);
-    $("#bookingCode").text(bookingCode);
-    $("#email").text(email);
+
+    alert(api.booked_workspace);
+
+    $("#booked_workspace").text(api.booked_workspace);
+    $("#bookingCode").text(api.bookingCode);
+    $("#email").text(api.email);
 </script>
 
 <p></p>
