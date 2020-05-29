@@ -37,9 +37,9 @@ The image should report successfully _'Listening on port 3000'_. Go to your brow
 
 Adjust the api uri to connecting the backend of the booking workstation software at file _js/app.js_  giving required parameter at 
 
-'''
+```
 let api = new Api ("localhost:12105/booking");
-'''
+```
 
 ## Production
 
