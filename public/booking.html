@@ -2,7 +2,7 @@
 <form id="booking">
   <div class="form-group row">
     <label for="institution" class="col-4 col-sm-2 col-form-label">Standort:</label>
-    <select id="institution" name="institution" class="custom-select col-6" required="required" onchange="javascript:api.getLocations()">
+    <select id="institution" name="institution" class="custom-select col-6" required="required" onchange="javascript:api.selectLocation()">
       <option>Bitte wählen ...</option>
     </select>
   </div>
@@ -46,26 +46,14 @@
   <input type="hidden" name="readernumber" id="readernumber"/>
   <input type="hidden" name="token" id="token"/>
 
-  <script>
-	  $("#readernumber").val(readernumber);
-	  $("#token").val(token);
-
-	  $.ajax({
-		  url: proto + '://' + url + '/booking/institutions',
-		  type: 'get',
-		  success: function (data) {
-
-			  data.split("#").forEach(function (e) {
-				  $("#institution").append("<option value=\"" + e + "\">" + e + "</option>");
-			  });
-		  }
-	  });
-  </script>
 </form>
-  <div class="form-group">
-    <div class="offset-2 col-8">
-      <button class="btn btn-primary" onclick="javascript:api.setReservation()">Arbeitsplatz buchen</button>
-    </div>
+<div class="form-group">
+  <div class="offset-2 col-8">
+    <button class="btn btn-primary" onclick="javascript:api.setReservation()">Arbeitsplatz buchen</button>
   </div>
+</div>
+<script>
+  api.getLocations();
+</script>
 
 

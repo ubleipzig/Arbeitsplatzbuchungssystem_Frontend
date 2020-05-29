@@ -7,6 +7,20 @@ class Api {
         this.token ="";
     }
     getLocations() {
+        $("#readernumber").val(readernumber);
+        $("#token").val(token);
+
+        $.ajax({
+            url: this.apiUri + '/institutions',
+            type: 'get',
+            success: function (data) {
+                data.split("#").forEach(function (e) {
+                    $("#institution").append("<option value=\"" + e + "\">" + e + "</option>");
+                });
+            }
+        });
+    }
+    selectLocation() {
         $.ajax({
             url: this.apiUri + '/areas?institution='+$("#institution").val(),
             type: 'get',
@@ -94,6 +108,7 @@ class Api {
                     return;
                 }
                 if (booked_workspace== "") {
+
                     alert("Leider konnte kein freier Platz zu Ihren Konditionen gefunden werden!");
                 } else {
                     $("#startdiv").addClass("starter-template");
