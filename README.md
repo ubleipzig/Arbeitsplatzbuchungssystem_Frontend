@@ -2,6 +2,11 @@
 
 Seats frontend contains the user interface for booking workstations at Leipzig University Library to realize hygiene regulations of state of Saxony.
 
+Contact: freitag@uni-leipzig.de or bdd_dev@ub.uni-leipzig.de
+
+Docker/NodeJS-Skeleton: morgnerf@ub.uni-leipzig.de
+
+
 ## Requirements
 
 There hasn't yet any special requirements running this project. All pages can be loaded at browser as standard html pages.
@@ -49,12 +54,12 @@ For production use it is necessary to include the **/public** folder only.
 
 Copyright (C) 2020 Leipzig University Library <info@ub.uni-leipzig.de>
 
-Histvv is free software: you can redistribute it and/or modify it under the
+APBS-Frontend is free software: you can redistribute it and/or modify it under the
 terms of the GNU General Public License as published by the Free Software
 Foundation, either version 3 of the License, or (at your option) any later
 version.
 
-Histvv is distributed in the hope that it will be useful, but WITHOUT ANY
+APBS-Frontend is distributed in the hope that it will be useful, but WITHOUT ANY
 WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
