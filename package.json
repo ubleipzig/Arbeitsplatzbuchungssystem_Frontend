@@ -1,0 +1,27 @@
+{
+  "name": "seats-frontend",
+  "version": "0.0.1",
+  "description": "Seats booking frontend for Leipzig University Library",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://seats.ub.uni-leipzig.de",
+  "main": "server.js",
+  "directories": {
+  },
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.sc.uni-leipzig.de:ubl/bdd_dev/arbeitsplatzbuchungssystem-frontend.git"
+  },
+  "keywords": [],
+  "dependencies": {
+    "dotenv": "8.2.0",
+    "express": "^4.17.1",
+    "http-errors": "~1.7.3"
+  },
+  "engines": {
+    "node": ">=10.0 <14.0"
+  }
+}

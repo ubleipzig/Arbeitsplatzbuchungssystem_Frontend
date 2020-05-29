@@ -1,0 +1,44 @@
+body {
+  padding-top: 5rem;
+  word-break:break-word;
+}
+h1,.h1 {
+  font-size:24px;
+}
+h2,.h2 {
+  font-size:20px;
+}
+h3,.h3 {
+  font-size:18px;
+}
+.navbar-inner.container {
+  margin: 0 auto;
+  max-width:1148px;
+  padding-left:20px
+}
+.navbar-toggler {
+  display:none
+}
+label{
+  display:block;
+}
+#timeslots label {
+  display:inline;
+}
+#timeslots {
+  padding-top:5px
+}
+input, select {
+  font-size:1rem;
+}
+@media (max-width:575.98px) {
+  body {
+    word-break:break-word;
+  }
+  .btn {font-size:1rem;}
+  .custom-select {display:block;}
+  #timeslots {margin-left:25%;}
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+}

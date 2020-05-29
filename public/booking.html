@@ -2,7 +2,7 @@
 <form id="booking">
   <div class="form-group row">
     <label for="institution" class="col-4 col-sm-2 col-form-label">Standort:</label>
-    <select id="institution" name="institution" class="custom-select col-6" required="required" onchange="javascript:getAreas()">
+    <select id="institution" name="institution" class="custom-select col-6" required="required" onchange="javascript:api.getLocations()">
       <option>Bitte wählen ...</option>
     </select>
   </div>
@@ -64,7 +64,7 @@
 </form>
   <div class="form-group">
     <div class="offset-2 col-8">
-      <button class="btn btn-primary" onclick="javascript:do_reservation()">Arbeitsplatz buchen</button>
+      <button class="btn btn-primary" onclick="javascript:api.setReservation()">Arbeitsplatz buchen</button>
     </div>
   </div>
 
