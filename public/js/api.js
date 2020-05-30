@@ -178,8 +178,6 @@ function setDateInterval() {
 
     $("#from_date").attr({"min":min, "max":max});
 
-    alert(min);
-    alert(max);
 }
 
 function reservation() {
