@@ -59,7 +59,7 @@ class Api {
             type: 'get',
             success: function(data) {
                 $("#from_time").attr({"min": data.from, "max": data.until, "value": data.from});
-                $("#until_time").attr({"min": data.from, "max": data.until, "value": data.from});
+                $("#until_time").attr({"min": data.from, "max": data.until, "value": data.until});
             }
         });
 
@@ -78,7 +78,10 @@ class Api {
                     $("#startdiv").load("hygiene.html");
                 }
                 else
+                {
                     alert(data.msg);
+                    $("#loginbtn").prop("disabled",false);
+                }
             }
         });
         this.readernumber = $("#readernumber").val();
@@ -148,6 +151,7 @@ class Api {
     }
 
     setStorno() {
+        $("#stornobtn").prop("disabled",true);
         $.ajax({
             url: this.apiUri + '/storno',
             type: 'post',
