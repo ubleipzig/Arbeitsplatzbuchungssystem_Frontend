@@ -160,6 +160,8 @@ class Api {
                 alert(data.message);
                 if(data.message=="Ihre Buchung wurde gelöscht.") {
                     document.location = "index.html";
+                }else{
+                    $("#stornobtn").prop("disabled",false);
                 }
             }
         });
