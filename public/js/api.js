@@ -66,6 +66,7 @@ class Api {
         $("#from_date").val("");
     }
     login() {
+        $("#loginbtn").prop("disabled",true);
         $.ajax({
             url: this.apiUri + '/login',
             type: 'post',
@@ -74,7 +75,6 @@ class Api {
                 if(data.token!="null") {
                     api.token = data.token;
                     $("#startdiv").removeClass("starter-template");
-                    //$("#startdiv").load("booking.html");
                     $("#startdiv").load("hygiene.html");
                 }
                 else
@@ -95,6 +95,7 @@ class Api {
         });
     }
     setReservation() {
+
         var d1 = $("#from_date").val();
 
         var t1 = $("#from_time").val();
@@ -110,6 +111,7 @@ class Api {
             return;
         }
 
+        $("#workspacebtn").prop("disabled",true);
         $.ajax({
             url: this.apiUri + '/booking',
             type: 'post',
@@ -125,11 +127,17 @@ class Api {
 
                 if(msg == "concurrently_booking") {
                     alert("Sie haben zur gleichen Zeit bereits eine bestehende Buchung!");
+                    $("#workspacebtn").prop("disabled",false);
+                    return;
+                }
+                if(msg == "sessionerror") {
+                    alert("Ihre Session ist abgelaufen!");
                     return;
                 }
                 if (api.booked_workspace== "") {
 
                     alert("Leider konnte kein freier Platz zu Ihren Konditionen gefunden werden!");
+                    $("#workspacebtn").prop("disabled",false);
                 } else {
                     $("#startdiv").addClass("starter-template");
                     $("#startdiv").load("result.html");
