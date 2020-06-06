@@ -79,8 +79,11 @@ class Api {
                 }
                 else
                 {
-                    alert(data.msg);
-                    $("#loginbtn").prop("disabled",false);
+                    alert(data.msg+"\nBitte warten Sie 10 Sekunden!");
+
+                    setTimeout(function(){ $("#loginbtn").prop("disabled",false); }, 10000);
+
+
                 }
             }
         });
@@ -128,6 +131,21 @@ class Api {
 
                 var msg = jsondata.message;
 
+                if(msg == "outofdate") {
+                    alert("Das ist außerhalb der Öffnungszeiten!");
+                    $("#workspacebtn").prop("disabled",false);
+                    return;
+                }
+                if(msg == "outofreach") {
+                    alert("Sie können nur innerhalb der nächsten 7 Tage buchen!");
+                    $("#workspacebtn").prop("disabled",false);
+                    return;
+                }
+                if(msg == "concurrent_error") {
+                    alert("Fehler bei der Buchung, bitte versuchen Sie es erneut!")
+                    $("#workspacebtn").prop("disabled",false);
+                    return;
+                }
                 if(msg == "concurrently_booking") {
                     alert("Sie haben zur gleichen Zeit bereits eine bestehende Buchung!");
                     $("#workspacebtn").prop("disabled",false);
