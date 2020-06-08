@@ -1,0 +1,35 @@
+<h1>Tagesbuchungsplan</h1>
+
+<form id="bookingplan">
+    <div class="form-group row">
+        <label for="institutions" class="col-4 col-sm-2 col-form-label">Standort:</label>
+        <select id="institutions" name="institutions" class="custom-select col-6" required="required">
+            <option>Bitte wählen ...</option>
+        </select>
+    </div>
+
+    <div class="form-group row">
+        <label for="datepicker" class="col-4 col-sm-2 col-form-label">Datum: </label>
+        <input type="date" id="datepicker" name="datepicker" value=""/>
+    </div>
+
+    <input type="hidden" id="bptoken" name="token"/>
+</form>
+
+<button class="btn btn-primary" id="bookingplanok" onclick="javascript:api2.getPlan()">OK</button>
+<button class="btn btn-primary" onclick="javascript:backtomain()">Zurück zum Menü</button>
+<p></p>
+
+<div id="plandiv">
+
+</div>
+<style>
+    .look:hover{
+        background-color:orange ;
+    }
+</style>
+<script>
+    api2.getLocation();
+    document.getElementById("datepicker").valueAsDate = new Date();
+    $("#bptoken").val(api2.token);
+</script>

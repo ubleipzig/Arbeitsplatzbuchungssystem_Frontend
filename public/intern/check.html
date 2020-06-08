@@ -1,0 +1,21 @@
+<h1>Buchungsprüfung</h1>
+
+<form id="check">
+    <div class="form-group row">
+        <label for="readernumber" class="col-4 col-sm-2 col-form-label">Bibliotheksnummer:</label>
+        <input type="text" id="readernumber" name="readernumber"/>
+    </div>
+</form>
+
+<button class="btn btn-primary" id="checkbtn" onclick="javascript:api2.check()">Prüfe</button>
+<button class="btn btn-primary" onclick="javascript:backtomain()">Zurück zum Menü</button>
+
+<p></p>
+
+<div id="checkinfo"></div>
+
+<style>
+    .look:hover{
+        background-color:orange ;
+    }
+</style>
