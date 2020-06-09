@@ -6,6 +6,12 @@
       <option>Bitte wählen ...</option>
     </select>
   </div>
+
+  <div class="form-group row">
+    <label class="col-4 col-sm-2 col-form-label">Buchbarer Zeitraum:</label>
+    <span style="padding-top: 8px" id="open">-</span>
+  </div>
+
   <div class="form-group row">
     <label for="area" class="col-4 col-sm-2 col-form-label">Bereich:</label>
     <select id="area" name="area" class="custom-select col-6 ">
@@ -15,11 +21,12 @@
 
   <div class="form-group row">
     <label for="fitting" class="col-4 col-sm-2 col-form-label">Ausstattung:</label>
-    <select id="fitting" name="fitting" class="custom-select col-6 " size="4" multiple="multiple">
-      <option value="ohne Strom">ohne Stromanschluss</option>
+    <select id="fitting" name="fitting" class="custom-select col-6 " size="5" multiple="multiple">
+      <option value="mit Strom">mit Stromanschluss</option>
       <option value="PC">mit PC</option>
       <option value="kein PC">ohne PC</option>
       <option value="LAN">mit LAN-Anschluss</option>
+      <option value="Steharbeitsplatz">Steharbeitsplatz</option>
     </select>
   </div>
 

@@ -59,7 +59,8 @@ class Api {
             type: 'get',
             success: function(data) {
                 $("#from_time").attr({"min": data.from, "max": data.until, "value": data.from});
-                $("#until_time").attr({"min": data.from, "max": data.until, "value": data.until});
+                $("#until_time").attr({"min": data.from, "max": data.until, "value": data.from});
+                $("#open").text(data.from+" Uhr -"+data.until+" Uhr");
             }
         });
 
