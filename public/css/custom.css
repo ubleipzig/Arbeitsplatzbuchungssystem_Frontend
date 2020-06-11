@@ -1,53 +1,87 @@
 body {
   padding-top: 5rem;
-  word-break:break-word;
+  word-break: break-word;
 }
-h1,.h1 {
-  font-size:24px;
+
+h1, .h1 {
+  font-size: 24px;
 }
-h2,.h2 {
-  font-size:20px;
+
+h2, .h2 {
+  font-size: 20px;
 }
-h3,.h3 {
-  font-size:18px;
+
+h3, .h3 {
+  font-size: 18px;
 }
+
 .navbar-inner.container {
   margin: 0 auto;
-  max-width:1148px;
-  padding-left:20px
+  max-width: 1148px;
+  padding-left: 20px
 }
+
 .navbar-toggler {
-  display:none
+  display: none
 }
-label{
-  display:block;
+
+label {
+  display: block;
 }
+
 #timeslots label {
-  display:inline;
+  display: inline;
 }
+
 #timeslots {
-  padding-top:5px
+  padding-top: 5px
 }
+
 input, select {
-  font-size:1rem;
+  font-size: 1rem;
 }
-@media (max-width:575.98px) {
+
+@media (max-width: 575.98px) {
   body {
-    word-break:break-word;
+    word-break: break-word;
   }
-  .btn {font-size:1rem;}
-  .custom-select {display:block;}
-  #timeslots {margin-left:25%;}
+
+  .btn {font-size: 1rem;}
+
+  .custom-select {display: block;}
+
+  #timeslots {margin-left: 25%;}
 }
+
 .starter-template {
   padding: 3rem 1.5rem;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px; /* Set the fixed height of the footer here */
-  line-height: 60px; /* Vertically center the text there */
-  background-color: #343a40!important;
+main.container {
+  padding-bottom: 60px; /* MUST be same height as footer! */
 }
+
+.footer {
+  background-color: #343a40;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .footer {
+    min-height: 30px;
+  }
+
+  .footer .row {
+    display: inline;
+  }
+}
+
+@media (min-width: 768px) {
+  .footer {
+    height: 60px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
+  }
+}
+
