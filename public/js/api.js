@@ -177,7 +177,7 @@ class Api {
             data: $('#stornoform').serialize(),
             success: function(data) {
                 alert(data.message);
-                if(data.message=="Ihre Buchung wurde gelöscht.") {
+                if(data.message=="Ihre Buchung wurde gelöscht."||data.message=="Die Restlaufzeit Ihrer Buchung wurde gelöscht.") {
                     document.location = "index.html";
                 }else{
                     $("#stornobtn").prop("disabled",false);

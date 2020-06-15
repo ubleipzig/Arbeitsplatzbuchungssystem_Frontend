@@ -91,7 +91,7 @@ class Api2 {
 
                 $("#plandiv").empty();
 
-                var entry = "<div class=\"row\"><div class=\"col-sm\">Platznummer</div><div class=\"col-sm\">Bibliotheksnummer</div><div class=\"col-sm\">Von</div><div class=\"col-sm\">Bis</div></div>";
+                var entry = "<div class=\"row\"><div class=\"col-sm\">Platznummer</div><div class=\"col-sm\">Bibliotheksnummer</div><div class=\"col-sm\">Von</div><div class=\"col-sm\">Bis</div><div class=\"col-sm\"></div></div>";
 
                 $("#plandiv").append(entry);
 
@@ -99,6 +99,7 @@ class Api2 {
 
                     entry = "<div class=\"row look\"><div class=\"col-sm\">"+data.result[i].workspaceId+"</div><div class=\"col-sm\">"+data.result[i].readernumber+
                         "</div><div class=\"col-sm\">"+data.result[i].start.slice(0,16)+"</div><div class=\"col-sm\">"+data.result[i].end.slice(0, 16)+"</div>"+
+                        "<div class=\"col-sm\"><button id=\"remove-"+data.result[i].bookingCode+"\" onclick=\"javascript:api2.remove('"+data.result[i].readernumber+"','"+data.result[i].bookingCode+"')\">Stornieren</button></div>"+
                         "</div>";
 
                     $("#plandiv").append(entry);
@@ -107,6 +108,17 @@ class Api2 {
             }
 
 
+        });
+    }
+    remove(readernumber, bookingCode) {
+        $("#remove-"+bookingCode).prop("disabled", true);
+        $.ajax({
+            url: this.apiUri + '/mastorno',
+            type: 'post',
+            data: '{ "token": "' + api2.token + '", "readernumber": "'+ readernumber + '", "bookingCode": "' +bookingCode+'" }',
+            success: function (data) {
+                alert(data.message);
+            }
         });
     }
     _apiUri() {
