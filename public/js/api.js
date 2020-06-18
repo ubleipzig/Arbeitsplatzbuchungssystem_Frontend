@@ -58,9 +58,25 @@ class Api {
             url: this.apiUri + '/timeslots?institution='+$("#institution").val(),
             type: 'get',
             success: function(data) {
-                $("#from_time").attr({"min": data.from, "max": data.until, "value": data.from});
-                $("#until_time").attr({"min": data.from, "max": data.until, "value": data.from});
-                $("#open").text(data.from+" Uhr -"+data.until+" Uhr");
+
+                var output = "";
+
+                data.interval.forEach(function(e){
+                   if(e.day=="2") output+= "Montag: "+e.from+" Uhr -"+e.until+" Uhr <br>";
+                   if(e.day=="3") output+= "Dienstag: "+e.from+" Uhr -"+e.until+" Uhr <br>";
+                   if(e.day=="4") output+= "Mittwoch: "+e.from+" Uhr -"+e.until+" Uhr <br>";
+                   if(e.day=="5") output+= "Donnerstag: "+e.from+" Uhr -"+e.until+" Uhr <br>";
+                   if(e.day=="6") output+= "Freitag: "+e.from+" Uhr -"+e.until+" Uhr <br>";
+                   if(e.day=="7") output+= "Sonnabend: "+e.from+" Uhr -"+e.until+" Uhr <br>";
+                   if(e.day=="1") output+= "Sonntag: "+e.from+" Uhr -"+e.until+" Uhr <br>";
+                   if(e.day==null) output+= e.from+" Uhr -"+e.until+" Uhr<br>";
+                });
+
+                $("#open").html(output);
+
+                //$("#from_time").attr({"min": data.from, "max": data.until, "value": data.from});
+                //$("#until_time").attr({"min": data.from, "max": data.until, "value": data.from});
+                //$("#open").text(data.from+" Uhr -"+data.until+" Uhr");
             }
         });
 
@@ -132,7 +148,7 @@ class Api {
 
                 var msg = jsondata.message;
 
-                if(msg == "outofdate") {
+                if(msg == "outofdate"||msg == "outoftime") {
                     alert("Das ist außerhalb der Öffnungszeiten!");
                     $("#workspacebtn").prop("disabled",false);
                     return;
