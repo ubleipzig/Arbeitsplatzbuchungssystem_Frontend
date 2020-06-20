@@ -67,7 +67,7 @@ class Api {
                    if(e.day=="4") output+= "Mittwoch: "+e.from+" Uhr -"+e.until+" Uhr <br>";
                    if(e.day=="5") output+= "Donnerstag: "+e.from+" Uhr -"+e.until+" Uhr <br>";
                    if(e.day=="6") output+= "Freitag: "+e.from+" Uhr -"+e.until+" Uhr <br>";
-                   if(e.day=="7") output+= "Sonnabend: "+e.from+" Uhr -"+e.until+" Uhr <br>";
+                   if(e.day=="7") output+= "Samstag: "+e.from+" Uhr -"+e.until+" Uhr <br>";
                    if(e.day=="1") output+= "Sonntag: "+e.from+" Uhr -"+e.until+" Uhr <br>";
                    if(e.day==null) output+= e.from+" Uhr -"+e.until+" Uhr<br>";
                 });
