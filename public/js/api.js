@@ -148,6 +148,24 @@ class Api {
 
                 var msg = jsondata.message;
 
+                if(msg == "notbookable") {
+                    alert("Die Plätze für diese Bibliothek sind erst ab 27.07.2020 buchbar.");
+                    $("#workspacebtn").prop("disabled",false);
+                    return;
+                }
+
+                if(msg == "notbookable2") {
+                    alert("Die Bibliothek ist vom 03.08 bis 14.08. geschlossen!");
+                    $("#workspacebtn").prop("disabled",false);
+                    return;
+                }
+
+                if(msg == "notbookable3") {
+                    alert("Die Bibliothek ist ab dem 03.08.2020 nur bis 16 Uhr geöffnet!");
+                    $("#workspacebtn").prop("disabled",false);
+                    return;
+                }
+
                 if(msg == "outofdate"||msg == "outoftime") {
                     alert("Das ist außerhalb der Öffnungszeiten!");
                     $("#workspacebtn").prop("disabled",false);
