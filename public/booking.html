@@ -55,6 +55,19 @@
     </div>
   </div>
 
+  <div class="form-group row">
+    <label for="auslastung" class="col-12 col-sm2 col-form-label">Auslastung</label>
+    <div class="col-8 col-sm-10" id="auslastung">
+     <div class="form-group-row">
+
+       <script>
+         api.getWorkload();
+       </script>
+
+     </div>
+    </div>
+  </div>
+
   <input type="hidden" name="readernumber" id="readernumber"/>
   <input type="hidden" name="token" id="token"/>
 

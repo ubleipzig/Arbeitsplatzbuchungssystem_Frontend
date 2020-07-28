@@ -41,6 +41,7 @@ class Api {
 
         });
     }
+
     selectLocation() {
         $.ajax({
             url: this.apiUri + '/areas?institution='+$("#institution").val(),
@@ -77,6 +78,14 @@ class Api {
                 //$("#from_time").attr({"min": data.from, "max": data.until, "value": data.from});
                 //$("#until_time").attr({"min": data.from, "max": data.until, "value": data.from});
                 //$("#open").text(data.from+" Uhr -"+data.until+" Uhr");
+            }
+        });
+
+        $.ajax({
+            url:this.apiUri + '/workload?institution='+$("#institution").val(),
+            type:'get',
+            success: function(data) {
+                alert(data);
             }
         });
 
