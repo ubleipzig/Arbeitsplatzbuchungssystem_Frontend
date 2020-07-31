@@ -85,7 +85,7 @@ class Api {
             url:this.apiUri + '/workload?institution='+$("#institution").val(),
             type:'get',
             success: function(data) {
-                alert(data);
+                $("#workloaddata").html(data);
             }
         });
 
