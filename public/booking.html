@@ -71,9 +71,9 @@
   </div>
 -->
   <div class="form-group row">
-    <label for="auslastung" class="col-12 col-sm-2 col-form-label"><a data-toggle="collapse" href="#auslastung">Freie Kapazitäten:</a></label>
+    <label for="auslastung" class="col-12 col-sm-2 col-form-label"><a data-toggle="collapse" href="#auslastung">Auslastung anzeigen: (BETA-Version)</a></label>
     <div class="col-8 col-sm-10 collapse" id="auslastung">
-        <div  id="workloaddata">wird berechnet...</div>
+        <div  id="workloaddata">wird berechnet nach Auswahl eines Standortes...</div>
     </div>
   </div>
 
@@ -84,6 +84,7 @@
 <div class="form-group">
   <div class="offset-2 col-8">
     <button class="btn btn-primary" id="workspacebtn" onclick="javascript:api.setReservation()">Arbeitsplatz buchen</button>
+    <button class="btn btn-primary" onclick="javascript:api.logout()">Ausloggen ohne zu buchen</button>
   </div>
 </div>
 <script>
