@@ -138,7 +138,9 @@ class Api {
         var w1 = $("#until_time").attr("min");
         var w2 = $("#until_time").attr("max");
 
-        if(t1<v1||t1>v2||t2<w1||t2>w2||t2<t1||d1==""||t1==t2) {
+        var tslot = $("#tslot").val();
+
+        if((t1<v1||t1>v2||t2<w1||t2>w2||t2<t1||d1==""||t1==t2)&&tslot==0) {
             alert("Bitte überprüfen Sie die ausgewählten Zeiten!");
             return;
         }
@@ -171,6 +173,12 @@ class Api {
 
                 if(msg == "notbookable3") {
                     alert("Die Bibliothek ist ab dem 03.08.2020 nur bis 16 Uhr geöffnet!");
+                    $("#workspacebtn").prop("disabled",false);
+                    return;
+                }
+
+                if(msg == "notbookable4") {
+                    alert("Dieser Bereich der Bibliothek ist vom 24.08.2020 bis 4.9.2020 geschlossen!");
                     $("#workspacebtn").prop("disabled",false);
                     return;
                 }
