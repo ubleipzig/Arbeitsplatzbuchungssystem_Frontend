@@ -60,12 +60,21 @@
     <div class="col-8 col-sm-10" id="findthegap">
       <div class="form-group row">
         <label for="tslot" class="col-12 col-sm-2 col-form-label">Zeitslot:</label>
-        <select id="tslot" name="tslot" class="custom-select col-6">
+        <select id="tslot" name="tslot" class="custom-select col-4" onchange="javascript:changebookingmethod()">
           <option value="0">---</option>
           <option value="1">1 Stunde</option>
           <option value="2">2 Stunden</option>
           <option value="3">3 Stunden</option>
           <option value="4">4 Stunden</option>
+        </select>
+      </div>
+      <div class="form-group row">
+        <label for="preference" class="col-12 col-sm-2 col-form-label">Präferenz</label>
+        <select id="preference" name="preference" class="custom-select col-4">
+          <option value="0">keine</option>
+          <option value="1">vormittags (bis 12 Uhr)</option>
+          <option value="2">nachmittags (von 12 bis 18 Uhr)</option>
+          <option value="3">abends (nach 18 Uhr)</option>
         </select>
       </div>
     </div>

@@ -9,6 +9,7 @@ class Api {
         this.booked_workspace = "";
         this.bookingCode = "";
         this.email = "";
+        this.bookingtime = "";
     }
     getLocations() {
 
@@ -145,6 +146,12 @@ class Api {
             return;
         }
 
+        if(tslot>0&&!d1) {
+            alert("Bitte ein Datum auswählen!");
+            return;
+        }
+
+
         $("#workspacebtn").prop("disabled",true);
         $.ajax({
             url: this.apiUri + '/booking',
@@ -156,6 +163,11 @@ class Api {
                 api.booked_workspace = jsondata.workspaceId;
                 api.bookingCode = jsondata.bookingCode;
                 api.email = jsondata.email;
+
+                var von = new Date(+jsondata.bookingtime.split(":")[0]);
+                var bis = new Date(+jsondata.bookingtime.split(":")[1])
+
+                api.bookingtime = "von "+("0"+von.getHours()).slice(-2)+":"+("0"+von.getMinutes()).slice(-2)+" bis "+("0"+bis.getHours()).slice(-2)+":"+("0"+bis.getMinutes()).slice(-2);
 
                 var msg = jsondata.message;
 
@@ -272,4 +284,16 @@ function storno() {
 }
 function hygiene_readed() {
     $("#startdiv").load("booking.html");
+}
+
+function changebookingmethod() {
+
+    if($("#tslot").val()!=0) {
+        $("#from_time").prop("disabled", true);
+        $("#until_time").prop("disabled", true);
+    }
+    else {
+        $("#from_time").prop("disabled", false);
+        $("#until_time").prop("disabled", false);
+    }
 }
