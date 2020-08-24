@@ -92,7 +92,7 @@ class Api {
 
         $("#from_date").val("");
     }
-    login() {
+    login(x) {
         $("#loginbtn").prop("disabled",true);
         $.ajax({
             url: this.apiUri + '/login',
@@ -102,7 +102,8 @@ class Api {
                 if(data.token!="null") {
                     api.token = data.token;
                     $("#startdiv").removeClass("starter-template");
-                    $("#startdiv").load("hygiene.html");
+                    if(x==0) $("#startdiv").load("hygiene.html");
+                    if(x==1) $("#startdiv").load("storno.html");
                 }
                 else
                 {
@@ -124,6 +125,16 @@ class Api {
             success: function (data) {
                 api.token = null;
                 document.location="index.html";
+            }
+        });
+    }
+    getBookings() {
+        $.ajax({
+            url: this.apiUri + '/admin',
+            type: 'post',
+            data: '{ "token": "' + api.token + '", "readernumber": "'+ api.readernumber + '" }',
+            success: function (data) {
+                alert(data);
             }
         });
     }
