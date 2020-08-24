@@ -282,6 +282,11 @@ function reservation() {
 function storno() {
     $("#startdiv").load("storno.html");
 }
+
+function openstorno() {
+    $("#startdiv").load("login_storno.html");
+}
+
 function hygiene_readed() {
     $("#startdiv").load("booking.html");
 }
