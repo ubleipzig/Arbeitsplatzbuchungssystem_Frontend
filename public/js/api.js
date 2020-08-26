@@ -134,7 +134,9 @@ class Api {
             type: 'post',
             data: '{ "token": "' + api.token + '", "readernumber": "'+ api.readernumber + '" }',
             success: function (data) {
-                alert(data);
+                for(var x=0;x<data.bookings.length;x++) {
+                    $("#result").append("Arbeitsplatz-ID: "+data.bookings[x].id+", "+data.bookings[x].institution+", "+new Date(data.bookings[x].start).toLocaleDateString()+"<br>");
+                }
             }
         });
     }
