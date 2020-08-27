@@ -149,7 +149,7 @@ class Api {
                                   "<div class='col-sm-2'>"+new Date(data.bookings[x].start).toLocaleDateString()+"</div>"+
                                   "<div class='col-sm-2'>von <input type='time' id='from' name='from' value='"+start_hour+":"+start_minute+"'></div>"+
                                   "<div class='col-sm-2'>bis <input type='time' id='until' name='until' value='"+end_hour+":"+end_minute+"'></div>"+
-                                  "<div class='col-sm-2'><button class='btn btn-primary' id='"+data.bookings[x].bookingCode+"_modifybtn' onclick=\"javascript:api.modify('"+data.bookings[x].bookingCode+"')\">Übernehmen</button></div>" +
+                                  "<div class='col-sm-2'><button class='btn btn-primary' id='"+data.bookings[x].bookingCode+"_modifybtn' onclick=\"javascript:api.modify('"+data.bookings[x].bookingCode+"')\">Anpassen</button></div>" +
                                   "<div class='col-sm-2'><button class='btn btn-primary' id='"+data.bookings[x].bookingCode+"_stornobtn' onclick=\"javascript:api.storno('"+data.bookings[x].bookingCode+"')\">Stornieren</button></div>"+
                                   "<input type='hidden' id='readernumber' name='readernumber' value='"+api.readernumber+"'/>"+
                                   "<input type='hidden' id='token' name='token' value='"+api.token+"'/>"+
