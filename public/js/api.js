@@ -135,7 +135,30 @@ class Api {
             data: '{ "token": "' + api.token + '", "readernumber": "'+ api.readernumber + '" }',
             success: function (data) {
                 for(var x=0;x<data.bookings.length;x++) {
-                    $("#result").append("Arbeitsplatz-ID: "+data.bookings[x].id+", "+data.bookings[x].institution+", "+new Date(data.bookings[x].start).toLocaleDateString()+"<br>");
+
+                    var start_hour = ("0"+new Date(data.bookings[x].start).getHours()).slice(-2);
+                    var end_hour = ("0"+new Date(data.bookings[x].end).getHours()).slice(-2);
+                    var start_minute = ("0"+new Date(data.bookings[x].start).getMinutes()).slice(-2);
+                    var end_minute = ("0"+new Date(data.bookings[x].end).getMinutes()).slice(-2);
+
+                    var rowcode = "<form id='"+data.bookings[x].bookingCode+"'>"+
+                                  "<div class='form-group row' style='border-width:thin;border-style: solid; padding: 10px'>"+
+                                  "<div class='col-sm-2'>Arbeitsplatz-Nr.:</div>"+
+                                  "<div class='col-sm-2'>"+data.bookings[x].id+"</div>"+
+                                  "<div class='col-sm-2'>"+data.bookings[x].institution+"</div>"+
+                                  "<div class='col-sm-2'>"+new Date(data.bookings[x].start).toLocaleDateString()+"</div>"+
+                                  "<div class='col-sm-2'>von <input type='time' id='from' name='from' value='"+start_hour+":"+start_minute+"'></div>"+
+                                  "<div class='col-sm-2'>bis <input type='time' id='until' name='until' value='"+end_hour+":"+end_minute+"'></div>"+
+                                  "<div class='col-sm-2'><button class='btn btn-primary' id='"+data.bookings[x].bookingCode+"_modifybtn' onclick=\"javascript:api.modify('"+data.bookings[x].bookingCode+"')\">Übernehmen</button></div>" +
+                                  "<div class='col-sm-2'><button class='btn btn-primary' id='"+data.bookings[x].bookingCode+"_stornobtn' onclick=\"javascript:api.storno('"+data.bookings[x].bookingCode+"')\">Stornieren</button></div>"+
+                                  "<input type='hidden' id='readernumber' name='readernumber' value='"+api.readernumber+"'/>"+
+                                  "<input type='hidden' id='token' name='token' value='"+api.token+"'/>"+
+                                  "<input type='hidden' id='bookingCode' name='bookingCode' value='"+data.bookings[x].bookingCode+"'/>"+
+                                  "<div></form>";
+                    $("#result").append(rowcode);
+                    $("#"+data.bookings[x].bookingCode).submit(function(event){
+                        event.preventDefault();
+                    })
                 }
             }
         });
@@ -244,19 +267,37 @@ class Api {
             }
         });
     }
+    storno(bc) {
 
-    setStorno() {
-        $("#stornobtn").prop("disabled",true);
+        $("#"+bc+"_stornobtn").prop("disabled", true);
         $.ajax({
             url: this.apiUri + '/storno',
             type: 'post',
-            data: $('#stornoform').serialize(),
+            data: $('#'+bc).serialize(),
             success: function(data) {
                 alert(data.message);
                 if(data.message=="Ihre Buchung wurde gelöscht."||data.message=="Die Restlaufzeit Ihrer Buchung wurde gelöscht.") {
-                    document.location = "index.html";
+                    //document.location = "index.html";
+                    $("#startdiv").load("storno.html");
                 }else{
-                    $("#stornobtn").prop("disabled",false);
+                    $("#"+bc+"_stornobtn").prop("disabled",false);
+                }
+            }
+        });
+    }
+    modify(bc) {
+        $("#"+bc+"_modifybtn").prop("disabled",true);
+        $.ajax({
+            url: this.apiUri + '/modify',
+            type: 'post',
+            data: $('#'+bc).serialize(),
+            success: function(data) {
+                alert(data.msg);
+                if(data.msg=="Ihre Buchung wurde geändert.") {
+                    //document.location = "index.html";
+                    $("#startdiv").load("storno.html");
+                }else{
+                    $("#"+bc+"_modifybtn").prop("disabled",false);
                 }
             }
         });
