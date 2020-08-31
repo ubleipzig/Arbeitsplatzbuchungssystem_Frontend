@@ -81,6 +81,57 @@ class Api2 {
             }
         });
     }
+    selectLocation(){
+        $.ajax({
+            url: this.apiUri + '/timeslots?institution='+$("#institutions").val(),
+            type: 'get',
+            success: function(data) {
+
+                $("#data").val(JSON.stringify(data,null,10));
+
+                var output = "";
+
+                data.interval.forEach(function(e){
+                    if(e.day=="2") output+= "Montag: "+e.from+" Uhr -"+e.until+" Uhr <br>";
+                    if(e.day=="3") output+= "Dienstag: "+e.from+" Uhr -"+e.until+" Uhr <br>";
+                    if(e.day=="4") output+= "Mittwoch: "+e.from+" Uhr -"+e.until+" Uhr <br>";
+                    if(e.day=="5") output+= "Donnerstag: "+e.from+" Uhr -"+e.until+" Uhr <br>";
+                    if(e.day=="6") output+= "Freitag: "+e.from+" Uhr -"+e.until+" Uhr <br>";
+                    if(e.day=="7") output+= "Samstag: "+e.from+" Uhr -"+e.until+" Uhr <br>";
+                    if(e.day=="1") output+= "Sonntag: "+e.from+" Uhr -"+e.until+" Uhr <br>";
+                    if(e.day==null) output+= e.from+" Uhr -"+e.until+" Uhr<br>";
+                });
+
+                //$("#open").html(output);
+
+                $("#cb_sunday").prop("checked", false);
+                $("#cb_monday").prop("checked", false);
+                $("#cb_tuesday").prop("checked", false);
+                $("#cb_wednesday").prop("checked", false);
+                $("#cb_thursday").prop("checked", false);
+                $("#cb_friday").prop("checked", false);
+                $("#cb_saturday").prop("checked", false);
+
+                var recclosredays = data.recclosuredays;
+                if(recclosredays!=null)
+                recclosredays.split(",").forEach(function (e){
+                    if(e==1) $("#cb_sunday").prop("checked", true);
+                    if(e==2) $("#cb_monday").prop("checked", true);
+                    if(e==3) $("#cb_tuesday").prop("checked", true);
+                    if(e==4) $("#cb_wednesday").prop("checked", true);
+                    if(e==5) $("#cb_thursday").prop("checked", true);
+                    if(e==6) $("#cb_friday").prop("checked", true);
+                    if(e==7) $("#cb_saturday").prop("checked", true);
+                });
+
+                var specclosuredays = data.specclosuredays;
+                $("#data_scd").val(specclosuredays);
+                //$("#from_time").attr({"min": data.from, "max": data.until, "value": data.from});
+                //$("#until_time").attr({"min": data.from, "max": data.until, "value": data.from});
+                //$("#open").text(data.from+" Uhr -"+data.until+" Uhr");
+            }
+        });
+    }
     getPlan() {
         $("#bookingplanok").prop("disabled", true);
         $.ajax({
@@ -136,6 +187,11 @@ function checkreservation() {
 
 function selectbookingplan() {
     $("#startdiv").load("bookingplan.html");
+}
+
+function selectclosure() {
+    if(api2.username=="freitag") $("#startdiv").load("closure.html");
+    else alert("Sub-System leider nicht verfügbar.");
 }
 
 function backtomain() {

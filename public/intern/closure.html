@@ -1,0 +1,22 @@
+<h1>Verwaltung von Schließtagen und Öffnungszeiten</h1>
+
+<select id="institutions" name="institutions" class="custom-select col-6" onchange="javascript:api2.selectLocation()">
+    <option>Bitte wählen...</option>
+</select>
+<p></p>
+<textarea id="data" class="col-lg-8"/>
+<p></p>
+<h2>Wiederkehrende (wöchentliche) Schließtage</h2>
+<input type="checkbox" id="cb_monday"> Montag</input><br>
+<input type="checkbox" id="cb_tuesday"> Dienstag</input><br>
+<input type="checkbox" id="cb_wednesday"> Mittwoch</input><br>
+<input type="checkbox" id="cb_thursday"> Donnerstag</input><br>
+<input type="checkbox" id="cb_friday"> Freitag</input><br>
+<input type="checkbox" id="cb_saturday"> Samstag</input><br>
+<input type="checkbox" id="cb_sunday"> Sonntag</input><br>
+<p></p>
+<h2>Einmalige Schließtage (beispielsweise Feiertage)</h2>
+<textarea id="data_scd" class="col-lg-8"/>
+<script>
+api2.getLocation();
+</script>
