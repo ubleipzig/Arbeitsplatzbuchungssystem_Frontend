@@ -172,14 +172,24 @@ class Api2 {
             }
         });
     }
+    loadexistingrules(){
+        $.ajax({
+           url: this.apiUri + '/rulesets',
+           type: 'post',
+           data: '{}',
+            success: function (data) {
+               $("#existingRules").html(data);
+            }
+        });
+    }
     _apiUri() {
         return this.proto + '://' + this.url
     }
 }
 
-// let api = new Api2 ("seats.ub.uni-leipzig.de/api/booking");
+// let api2 = new Api2 ("seats.ub.uni-leipzig.de/api/booking");
  let api2 = new Api2 ("localhost:12105/booking");
-//let api = new Api2 ("172.18.85.108:12105/booking");
+//let api2 = new Api2 ("172.18.85.108:12105/booking");
 
 function checkreservation() {
     $("#startdiv").load("check.html");
@@ -196,4 +206,8 @@ function selectclosure() {
 
 function backtomain() {
     $("#startdiv").load("main.html");
+}
+
+function specialruleset() {
+    $("#startdiv").load("rulesets.html");
 }
