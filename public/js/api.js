@@ -370,3 +370,7 @@ function changebookingmethod() {
         $("#until_time").prop("disabled", false);
     }
 }
+
+function showinfo() {
+    $("#startdiv").load("info.html");
+}
