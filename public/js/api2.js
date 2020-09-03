@@ -178,7 +178,12 @@ class Api2 {
            type: 'post',
            data: '{}',
             success: function (data) {
-               $("#existingRules").html(data);
+
+               data.SpecialRulesets.forEach(function (e){
+                   $("#existingRules").append("<b>Name: </b>"+e+" <a href='#'>Bearbeiten</a> <a href='#'>Löschen</a><br>");
+               });
+
+
             }
         });
     }
