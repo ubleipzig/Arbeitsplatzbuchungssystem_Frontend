@@ -207,6 +207,13 @@ class Api {
 
                 var msg = jsondata.message;
 
+                if(msg.startsWith("info#")) {
+                    msg = msg.substring(5);
+                    alert(msg);
+                    $("#workspacebtn").prop("disabled",false);
+                    return;
+                }
+
                 if(msg == "notbookable") {
                     alert("Die Plätze für diese Bibliothek sind erst ab 27.07.2020 buchbar.");
                     $("#workspacebtn").prop("disabled",false);
