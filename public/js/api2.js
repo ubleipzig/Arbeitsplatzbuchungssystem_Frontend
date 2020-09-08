@@ -209,6 +209,10 @@ function selectclosure() {
     else alert("Sub-System leider nicht verfügbar.");
 }
 
+function mabooking() {
+
+}
+
 function backtomain() {
     $("#startdiv").load("main.html");
 }
