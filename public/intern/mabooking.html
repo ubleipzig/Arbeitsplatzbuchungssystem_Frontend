@@ -1,0 +1,118 @@
+<script src="../js/api.js"></script>
+<h1>Buchungsmaske für Mitarbeiter</h1>
+<form id="booking">
+  <div class="form-group row">
+    <label for="institution" class="col-4 col-sm-2 col-form-label">Standort:</label>
+    <select id="institution" name="institution" class="custom-select col-6" required="required" onchange="javascript:api.selectLocation()">
+      <option>Bitte wählen ...</option>
+    </select>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-4 col-sm-2 col-form-label">Buchbarer Zeitraum:</label>
+    <span style="padding-top: 8px" id="open">-</span>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-4 col-sm-2 col-form-label"/>
+    Bitte beachten Sie die standortspezifischen Öffnungstage.
+  </div>
+
+  <div class="form-group row">
+    <label for="area" class="col-4 col-sm-2 col-form-label">Bereich:</label>
+    <select id="area" name="area" class="custom-select col-6 ">
+      <option>Bitte wählen ...</option>
+    </select>
+  </div>
+
+  <div class="form-group row">
+    <label for="fitting" class="col-4 col-sm-2 col-form-label">Ausstattung:</label>
+    <select id="fitting" name="fitting" class="custom-select col-6 " size="5" multiple="multiple">
+      <option value="mit Strom">mit Stromanschluss</option>
+      <option value="PC">mit PC</option>
+      <option value="kein PC">ohne PC</option>
+      <option value="LAN">mit LAN-Anschluss</option>
+      <option value="Steharbeitsplatz">Steharbeitsplatz</option>
+    </select>
+  </div>
+  <div class="form-group row">
+    <div class="col-4 col-sm-2"></div><div class="col-6"><a href="javascript:$('#fitting').val('')">Ausstattungsauswahl zurücksetzen</a></div>
+  </div>
+
+  <div class="form-group row">
+    <label for="selectreadernumber" class="col-12 col-sm-2 col-form-label">Bibliotheksnummer:</label>
+    <div class="col-8 col-sm-10" id="selectreadernumber">
+      <input type="text" id="readernumber" name="readernumber"/>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="timeslots" class="col-12 col-sm-2 col-form-label">Zeitpunkt:</label>
+    <div class="col-8 col-sm-10" id="timeslots">
+      <div class="form-group row">
+        <div class="col-12 col-sm-4">
+          <label for="from_date">Datum:</label>
+          <input id="from_date" name="from_date" type="date" onchange="javascript:api.check_date()" min="" max=""/>
+        </div>
+        <div class="col-6 col-sm-3">
+          <label for="from_time">Uhrzeit von:</label>
+          <input id="from_time" name="from_time" type="time"/>
+        </div>
+        <div class="col-6 col-sm-3">
+          <label for="until_time">Uhrzeit bis:</label>
+          <input id="until_time" name="until_time" type="time"/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="findthegap" class="col-12 col-sm-2 col-form-label">"Lückenfinder":</label>
+    <div class="col-8 col-sm-10" id="findthegap">
+      <div class="form-group row">
+        <label for="tslot" class="col-12 col-sm-2 col-form-label">Zeitslot:</label>
+        <select id="tslot" name="tslot" class="custom-select col-4" onchange="javascript:changebookingmethod()">
+          <option value="0">---</option>
+          <option value="1">1 Stunde</option>
+          <option value="2">2 Stunden</option>
+          <option value="3">3 Stunden</option>
+          <option value="4">4 Stunden</option>
+        </select>
+      </div>
+      <div class="form-group row">
+        <label for="preference" class="col-12 col-sm-2 col-form-label">Präferenz</label>
+        <select id="preference" name="preference" class="custom-select col-4">
+          <option value="0">keine</option>
+          <option value="1">vormittags (bis 12 Uhr)</option>
+          <option value="2">nachmittags (von 12 bis 18 Uhr)</option>
+          <option value="3">abends (nach 18 Uhr)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="auslastung" class="col-12 col-sm-2 col-form-label"><a data-toggle="collapse" href="#auslastung">Auslastung anzeigen: </a></label>
+    <div class="col-8 col-sm-10 collapse" id="auslastung">
+        <div  id="workloaddata">wird berechnet nach Auswahl eines Standortes...</div>
+    </div>
+  </div>
+
+
+  <input type="hidden" name="token" id="token"/>
+
+</form>
+<div class="form-group">
+  <div class="offset-2 col-8">
+    <button class="btn btn-primary" id="workspacebtn" onclick="javascript:api.setReservation()">Arbeitsplatz buchen</button>
+    <button class="btn btn-primary" onclick="javascript:backtomain()">Zurück zum Menü</button>
+  </div>
+</div>
+
+<script>
+  api.getLocations();
+  setDateInterval();
+  $("#token").val(api2.token);
+</script>
+
+

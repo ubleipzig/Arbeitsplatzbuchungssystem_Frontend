@@ -210,7 +210,7 @@ function selectclosure() {
 }
 
 function mabooking() {
-
+    $("#startdiv").load("mabooking.html");
 }
 
 function backtomain() {
