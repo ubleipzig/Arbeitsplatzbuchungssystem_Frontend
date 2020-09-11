@@ -220,3 +220,7 @@ function backtomain() {
 function specialruleset() {
     $("#startdiv").load("rulesets.html");
 }
+
+function newruleset() {
+    $("#newRuleset").load("newruleset.html");
+}
