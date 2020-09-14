@@ -187,6 +187,9 @@ class Api2 {
             }
         });
     }
+    createnewrule(){
+
+    }
     _apiUri() {
         return this.proto + '://' + this.url
     }

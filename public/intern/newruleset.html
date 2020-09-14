@@ -1,3 +1,4 @@
+<form id="newruleset">
 <div class="row">
     <div class="col"><label class="col-form-label" for="rulesetname">Name der Sonderregel</label></div>
     <div class="col"><input type="text" name="rulesetname" id="rulesetname" style="width: 300px;"></div>
@@ -10,8 +11,8 @@
     <div class="col"><label class="col-form-label">Startzeitpunkt</label></div>
     <div class="col">
         <div class="row">
-            <div class="col"><input type="date"></div>
-            <div class="col"><input type="time"></div>
+            <div class="col"><input type="date" name="startdate" id="startdate"></div>
+            <div class="col"><input type="time" name="starttime" id="starttime"></div>
         </div>
     </div>
 </div>
@@ -19,8 +20,8 @@
     <div class="col"><label class="col-form-label">Endzeitpunkt</label></div>
     <div class="col">
         <div class="row">
-            <div class="col"><input type="date"></div>
-            <div class="col"><input type="time"></div>
+            <div class="col"><input type="date" name="enddate" id="enddate"></div>
+            <div class="col"><input type="time" name="endtime" id="endtime"></div>
         </div>
     </div>
 </div>
@@ -36,3 +37,5 @@
     <div class="col"><label class="col-form-label" for="infotext">Infotext</label></div>
     <div class="col"><textarea name="infotext" id="infotext" style="width: 300px;"></textarea></div>
 </div>
+</form>
+<button class="btn btn-primary" onclick="javascript:api2.createnewrule()">Einrichten</button>
