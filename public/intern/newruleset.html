@@ -5,7 +5,11 @@
 </div>
 <div class="row">
     <div class="col"><label class="col-form-label" for="rulesettype">Art der Sonderregel</label></div>
-    <div class="col"><select name="rulesettype" id="rulesettype"><option value="1" selected="">Bibliotheksschließung</option><option value="2">Platzblockade</option><option value="3">Bereichsschließung</option><option value="4">Öffnungszeitenänderung</option></select></div>
+    <div class="col"><select name="rulesettype" id="rulesettype">
+        <option value="1" selected="">Bibliotheksschließung</option>
+        <option value="2">Platzblockade</option>
+        <option value="3">Bereichsschließung</option>
+        <option value="4">Öffnungszeitenänderung</option></select></div>
 </div>
 <div class="row">
     <div class="col"><label class="col-form-label">Startzeitpunkt</label></div>
@@ -23,6 +27,18 @@
             <div class="col"><input type="date" name="enddate" id="enddate"></div>
             <div class="col"><input type="time" name="endtime" id="endtime"></div>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col"><label class="col-form-label">Öffnungszeit</label></div>
+    <div class="col">
+            <input type="time" name="opening" id="opening">
+    </div>
+</div>
+<div class="row">
+    <div class="col"><label class="col-form-label">Schließzeit</label></div>
+    <div class="col">
+        <input type="time" name="closing" id="closing">
     </div>
 </div>
 <div class="row">

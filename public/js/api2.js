@@ -225,5 +225,6 @@ function specialruleset() {
 }
 
 function newruleset() {
+    $("#newruleset_btn").prop("disabled", true);
     $("#newRuleset").load("newruleset.html");
 }
