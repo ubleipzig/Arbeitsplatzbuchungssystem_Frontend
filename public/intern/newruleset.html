@@ -4,12 +4,21 @@
     <div class="col"><input type="text" name="rulesetname" id="rulesetname" style="width: 300px;"></div>
 </div>
 <div class="row">
+    <div class="col"><label for="institutions" class="col-form-label">betreffender Standort:</label></div>
+    <div class="col"><select id="institutions" name="institutions" required="required">
+        <option>Bitte wählen ...</option>
+    </select>
+    </div>
+</div>
+<div class="row">
     <div class="col"><label class="col-form-label" for="rulesettype">Art der Sonderregel</label></div>
-    <div class="col"><select name="rulesettype" id="rulesettype">
+    <div class="col">
+        <select name="rulesettype" id="rulesettype">
         <option value="1" selected="">Bibliotheksschließung</option>
         <option value="2">Platzblockade</option>
         <option value="3">Bereichsschließung</option>
-        <option value="4">Öffnungszeitenänderung</option></select></div>
+        <option value="4">Öffnungszeitenänderung</option></select>
+    </div>
 </div>
 <div class="row">
     <div class="col"><label class="col-form-label">Startzeitpunkt</label></div>
@@ -53,5 +62,9 @@
     <div class="col"><label class="col-form-label" for="infotext">Infotext</label></div>
     <div class="col"><textarea name="infotext" id="infotext" style="width: 300px;"></textarea></div>
 </div>
+    <input type="hidden" name="isnewrule" id="isnewrule"/>
 </form>
 <button class="btn btn-primary" onclick="javascript:api2.createnewrule()">Einrichten</button>
+<script>
+    api2.getLocation();
+</script>

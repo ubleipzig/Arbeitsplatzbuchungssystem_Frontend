@@ -176,7 +176,7 @@ class Api2 {
         $.ajax({
            url: this.apiUri + '/rulesets',
            type: 'post',
-           data: '{}',
+           data: 'rulesetname=',
             success: function (data) {
 
                data.SpecialRulesets.forEach(function (e){
@@ -188,7 +188,14 @@ class Api2 {
         });
     }
     createnewrule(){
-
+        $.ajax({
+            url: this.apiUri + '/rulesets',
+            type: 'post',
+            data: $('#newruleset').serialize(),
+            success: function (data) {
+                alert("OK");
+            }
+        });
     }
     _apiUri() {
         return this.proto + '://' + this.url
