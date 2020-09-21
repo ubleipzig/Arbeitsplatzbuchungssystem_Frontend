@@ -1,9 +1,11 @@
 class Api {
 
-    constructor(uri, protocoll = "http") {
+    constructor(uri, uri2, protocol = "http") {
         this.url = uri;
-        this.proto = protocoll;
+        this.url_intern = uri2;
+        this.proto = protocol;
         this.apiUri = this._apiUri();
+        this.apiUriIntern = this._apiUriIntern();
         this.readernumber = "";
         this.token ="";
         this.booked_workspace = "";
@@ -190,7 +192,7 @@ class Api {
 
         $("#workspacebtn").prop("disabled",true);
         $.ajax({
-            url: this.apiUri + '/booking',
+            url: this.apiUriIntern + '/booking',
             type: 'post',
             data: $('#booking').serialize(),
             success: function(data) {
@@ -326,11 +328,14 @@ class Api {
     _apiUri() {
         return this.proto + '://' + this.url
     }
+    _apiUriIntern() {
+        return this.proto + '://' + this.url_intern
+    }
 }
 
-// let api = new Api ("seats.ub.uni-leipzig.de/api/booking");
- let api = new Api ("localhost:12105/booking");
-//let api = new Api ("172.18.85.108:12105/booking");
+// let api = new Api ("seats.ub.uni-leipzig.de/api/booking", "seats.ub.uni-leipzig.de/booking-internal");
+ let api = new Api ("localhost:12105/booking", "localhost:12106/booking");
+//let api = new Api ("172.18.85.108:12105/booking", "172.18.85.108:1206/booking");
 
 function setDateInterval() {
 
