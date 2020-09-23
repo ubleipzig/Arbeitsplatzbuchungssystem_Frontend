@@ -333,7 +333,7 @@ class Api {
     }
 }
 
-// let api = new Api ("seats.ub.uni-leipzig.de/api/booking", "seats.ub.uni-leipzig.de/booking-internal");
+// let api = new Api ("seats.ub.uni-leipzig.de/api/booking", "seats.ub.uni-leipzig.de/booking-internal/booking");
  let api = new Api ("localhost:12105/booking", "localhost:12106/booking");
 //let api = new Api ("172.18.85.108:12105/booking", "172.18.85.108:1206/booking");
 
