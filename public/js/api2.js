@@ -70,6 +70,16 @@ class Api2 {
             }
         });
     }
+    setClosure() {
+        $.ajax({
+            url: this.apiUri + '/modifyClosure',
+            type: 'post',
+            data: $('#closuretimes').serialize(),
+            success: function (data) {
+                alert(data);
+            }
+        });
+    }
     getLocation(){
         $.ajax({
             url: this.apiUri + '/institutions',

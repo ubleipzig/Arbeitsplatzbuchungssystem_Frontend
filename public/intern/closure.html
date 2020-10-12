@@ -1,5 +1,5 @@
 <h1>Verwaltung von Schließtagen und Öffnungszeiten</h1>
-
+<form id="closuretimes">
 <select id="institutions" name="institutions" class="custom-select col-6" onchange="javascript:api2.selectLocation()">
     <option>Bitte wählen...</option>
 </select>
@@ -7,16 +7,24 @@
 <textarea id="data" class="col-lg-8"/>
 <p></p>
 <h2>Wiederkehrende (wöchentliche) Schließtage</h2>
-<input type="checkbox" id="cb_monday"> Montag</input><br>
-<input type="checkbox" id="cb_tuesday"> Dienstag</input><br>
-<input type="checkbox" id="cb_wednesday"> Mittwoch</input><br>
-<input type="checkbox" id="cb_thursday"> Donnerstag</input><br>
-<input type="checkbox" id="cb_friday"> Freitag</input><br>
-<input type="checkbox" id="cb_saturday"> Samstag</input><br>
-<input type="checkbox" id="cb_sunday"> Sonntag</input><br>
+<input type="checkbox" id="cb_monday" disabled> Montag</input><br>
+<input type="checkbox" id="cb_tuesday" disabled> Dienstag</input><br>
+<input type="checkbox" id="cb_wednesday" disabled> Mittwoch</input><br>
+<input type="checkbox" id="cb_thursday" disabled> Donnerstag</input><br>
+<input type="checkbox" id="cb_friday" disabled> Freitag</input><br>
+<input type="checkbox" id="cb_saturday" disabled> Samstag</input><br>
+<input type="checkbox" id="cb_sunday" disabled> Sonntag</input><br>
 <p></p>
 <h2>Einmalige Schließtage (beispielsweise Feiertage)</h2>
-<textarea id="data_scd" class="col-lg-8"/>
+<textarea id="data_scd" name="data_scd" class="col-lg-8"/>
+    <p></p>
+    <input type="hidden" name="token" id="token"/>
+    <input type="hidden" name="username" id="username"/>
+</form>
+<button class="btn btn-primary" id="closure_update" onclick="javascript:api2.setClosure()">Übernehmen</button>
+<button class="btn btn-primary" onclick="javascript:backtomain()">Zurück zum Menü</button>
 <script>
 api2.getLocation();
+$("#username").val(api2.username);
+$("#token").val(api2.token);
 </script>
