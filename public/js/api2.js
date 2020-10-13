@@ -172,6 +172,13 @@ class Api2 {
         });
     }
     remove(readernumber, bookingCode) {
+
+        var really = window.confirm("Buchung der Bibliotheksnummer "+readernumber+" wirklich stornieren?");
+
+        if(!really) {
+            return;
+        }
+
         $("#remove-"+bookingCode).prop("disabled", true);
         $.ajax({
             url: this.apiUri + '/mastorno',
