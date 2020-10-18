@@ -193,13 +193,37 @@ class Api2 {
         $.ajax({
            url: this.apiUri + '/rulesets',
            type: 'post',
-           data: 'rulesetname=',
+           data: 'optiontype=1',
             success: function (data) {
 
                data.SpecialRulesets.forEach(function (e){
-                   $("#existingRules").append("<b>Name: </b>"+e+" <a href='#'>Bearbeiten</a> <a href='#'>Löschen</a><br>");
+                   $("#existingRules").append("<b>Name: </b>"+e+" <a href=\"javascript:api2.editexistingrule('"+e+"')\">Bearbeiten</a> <a href='#'>Löschen</a><br>");
                });
 
+
+            }
+        });
+    }
+    editexistingrule(rulename){
+
+
+
+        $.ajax({
+            url: this.apiUri + '/rulesets',
+            type: 'post',
+            data: 'optiontype=3&rulesetname=' + rulename,
+            success: function (data) {
+
+                //alert("Wird geladen...");
+                $("#newRuleset").load("newruleset.html", function()
+                {
+                    alert(data.institution);
+                    $("#rulesetname").val(data.name);
+                    $("#institutions select").val(data.institution);
+                    $("#starttime").prop("value",data.starttime);
+                    $("#startdate").prop("value",data.startdate);
+                });
+                //$("#institutions").select(data.institution);
 
             }
         });

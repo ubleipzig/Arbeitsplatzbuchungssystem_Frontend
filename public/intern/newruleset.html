@@ -47,6 +47,7 @@
     </div>
     <div class="col">
         <select name="day" id="day">
+            <option value="">Bitte wählen</option>
             <option value="0">Montag-Freitag</option>
             <option value="6">Freitag</option>
             <option value="7">Samstag</option>
@@ -79,6 +80,7 @@
     <div class="col"><textarea name="infotext" id="infotext" style="width: 300px;"></textarea></div>
 </div>
     <input type="hidden" name="isnewrule" id="isnewrule" value="1"/>
+    <input type="hidden" name="optiontype" id="optiontype" value="2"/>
 </form>
 <button class="btn btn-primary" onclick="javascript:api2.createnewrule()">Einrichten</button>
 <script>
