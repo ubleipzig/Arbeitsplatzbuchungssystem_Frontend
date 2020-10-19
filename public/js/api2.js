@@ -217,14 +217,16 @@ class Api2 {
                 //alert("Wird geladen...");
                 $("#newRuleset").load("newruleset.html", function()
                 {
-                    alert(data.institution);
+
                     $("#rulesetname").val(data.name);
-                    $("#institutions select").val(data.institution);
+
+                    setTimeout(function(){ $("#institutions").val(data.institution); }, 1000);
+
+                    $("#institutions").val(data.institution);
                     $("#starttime").prop("value",data.starttime);
                     $("#startdate").prop("value",data.startdate);
-                });
-                //$("#institutions").select(data.institution);
 
+                });
             }
         });
     }
