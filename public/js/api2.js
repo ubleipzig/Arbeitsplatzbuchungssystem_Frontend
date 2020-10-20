@@ -220,11 +220,27 @@ class Api2 {
 
                     $("#rulesetname").val(data.name);
 
-                    setTimeout(function(){ $("#institutions").val(data.institution); }, 1000);
+                    setTimeout(function(){
+                        $("#institutions").val(data.institution);
+                        var t = "";
+                        if(data.type=="Bibliotheksschließung")
+                            t="1";
+                        if(data.type=="Platzblockade")
+                            t="2";
+                        if(data.type=="Bereichsschließung")
+                            t="3";
+                        if(data.type=="Öffnungszeitenänderung")
+                            t="4";
+
+                        $("#rulesettype").val(t);
+
+                        }, 1000);
 
                     $("#institutions").val(data.institution);
                     $("#starttime").prop("value",data.starttime);
                     $("#startdate").prop("value",data.startdate);
+                    $("#endtime").prop("value",data.endtime);
+                    $("#enddate").prop("value",data.enddate);
 
                 });
             }
