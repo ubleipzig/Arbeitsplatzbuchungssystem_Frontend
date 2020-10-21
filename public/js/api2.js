@@ -234,6 +234,12 @@ class Api2 {
 
                         $("#rulesettype").val(t);
 
+                        var d = "";
+                        if(data.day==null)
+                            d="";
+                        else d=data.day;
+                        $("#day").val(d);
+
                         }, 1000);
 
                     $("#institutions").val(data.institution);
@@ -244,6 +250,10 @@ class Api2 {
 
                     $("#closing").prop("value",data.closing);
                     $("#opening").prop("value",data.opening);
+
+                    $("#infotext").prop("value",data.infotext);
+
+
 
                 });
             }
