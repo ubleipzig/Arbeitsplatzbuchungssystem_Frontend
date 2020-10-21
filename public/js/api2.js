@@ -242,6 +242,9 @@ class Api2 {
                     $("#endtime").prop("value",data.endtime);
                     $("#enddate").prop("value",data.enddate);
 
+                    $("#closing").prop("value",data.closing);
+                    $("#opening").prop("value",data.opening);
+
                 });
             }
         });
