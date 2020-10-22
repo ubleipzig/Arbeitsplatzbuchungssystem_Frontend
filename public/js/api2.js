@@ -197,17 +197,25 @@ class Api2 {
             success: function (data) {
 
                data.SpecialRulesets.forEach(function (e){
-                   $("#existingRules").append("<b>Name: </b>"+e+" <a href=\"javascript:api2.editexistingrule('"+e+"')\">Bearbeiten</a> <a href='#'>Löschen</a><br>");
+                   $("#existingRules").append("<b>Name: </b>"+e+" <a href=\"javascript:api2.editexistingrule('"+e+"')\">Bearbeiten</a> <a href=\"javascript:api2.removerule('"+e+"')\">Löschen</a><br>");
                });
 
 
             }
         });
     }
+    removerule(rulename) {
+        alert(rulename);
+        $.ajax({
+            url: this.apiUri + '/rulesets',
+            type: 'post',
+            data: 'optiontype=4&rulesetname=' + rulename,
+            success: function (data) {
+                alert("OK");
+            }
+        });
+    }
     editexistingrule(rulename){
-
-
-
         $.ajax({
             url: this.apiUri + '/rulesets',
             type: 'post',
@@ -222,7 +230,7 @@ class Api2 {
 
                     setTimeout(function(){
                         $("#institutions").val(data.institution);
-                        alert(data.type);
+
                         var t = "";
                         if(data.type=="Bibliotheksschließung")
                             t="1";
@@ -236,10 +244,12 @@ class Api2 {
                         $("#rulesettype").val(t);
 
                         var d = "";
-                        if(data.day==null)
-                            d="";
+                        if(data.day=="null")
+                            d="0";
                         else d=data.day;
                         $("#day").val(d);
+
+
 
                         }, 1000);
 
@@ -256,7 +266,8 @@ class Api2 {
                     $("#area").prop("value",data.area);
                     $("#workspaceids").prop("value",data.workspaceids);
 
-
+                    $("#rulebtn").text("Update");
+                    $("#isnewrule").prop("value","0");
                 });
             }
         });
