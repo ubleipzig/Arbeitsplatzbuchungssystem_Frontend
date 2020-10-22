@@ -222,6 +222,7 @@ class Api2 {
 
                     setTimeout(function(){
                         $("#institutions").val(data.institution);
+                        alert(data.type);
                         var t = "";
                         if(data.type=="Bibliotheksschließung")
                             t="1";
@@ -252,7 +253,8 @@ class Api2 {
                     $("#opening").prop("value",data.opening);
 
                     $("#infotext").prop("value",data.infotext);
-
+                    $("#area").prop("value",data.area);
+                    $("#workspaceids").prop("value",data.workspaceids);
 
 
                 });
