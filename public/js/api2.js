@@ -193,7 +193,7 @@ class Api2 {
         $.ajax({
            url: this.apiUri + '/rulesets',
            type: 'post',
-           data: 'optiontype=1',
+           data: 'optiontype=1&username='+api2.username+'&token='+api2.token,
             success: function (data) {
 
                data.SpecialRulesets.forEach(function (e){
@@ -209,17 +209,21 @@ class Api2 {
         $.ajax({
             url: this.apiUri + '/rulesets',
             type: 'post',
-            data: 'optiontype=4&rulesetname=' + rulename,
+            data: 'optiontype=4&rulesetname=' + rulename+'&username='+api2.username+'&token='+api2.token,
             success: function (data) {
                 alert("OK");
             }
         });
+        $("#existingRules").html("");
+        this.loadexistingrules();
     }
     editexistingrule(rulename){
+        $("#username").val(api2.username);
+        $("#token").val(api2.token);
         $.ajax({
             url: this.apiUri + '/rulesets',
             type: 'post',
-            data: 'optiontype=3&rulesetname=' + rulename,
+            data: 'optiontype=3&rulesetname=' + rulename+'&username='+api2.username+'&token='+api2.token,
             success: function (data) {
 
                 //alert("Wird geladen...");
@@ -273,6 +277,8 @@ class Api2 {
         });
     }
     createnewrule(){
+        $("#username").val(api2.username);
+        $("#token").val(api2.token);
         $.ajax({
             url: this.apiUri + '/rulesets',
             type: 'post',
