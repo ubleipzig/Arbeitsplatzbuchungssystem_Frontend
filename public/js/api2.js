@@ -71,6 +71,22 @@ class Api2 {
         });
     }
     setClosure() {
+
+        var d = $("#data_scd").val();
+
+        if(d.includes("-")) {
+            alert("Fehler bei der Datumsangabe!");
+            return;
+        }
+
+        /*var vw = ""
+
+        d.split(",").forEach(function(e) {
+
+        });
+
+        return;*/
+
         $.ajax({
             url: this.apiUri + '/modifyClosure',
             type: 'post',
