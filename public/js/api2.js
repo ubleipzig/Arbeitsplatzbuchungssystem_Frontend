@@ -72,10 +72,13 @@ class Api2 {
     }
     setClosure() {
 
+        var valid = true;
+
         var d = $("#data_scd").val();
 
         if(d.includes("-")) {
             alert("Fehler bei der Datumsangabe!");
+            valid = false;
             return;
         }
 
@@ -84,18 +87,21 @@ class Api2 {
         d.split(",").forEach(function(e) {
             if(!vw.test(e)) {
                 alert("Fehler in der Datumsangabe!")
+                valid = false;
                 return;
             }
         });
 
-        $.ajax({
-            url: this.apiUri + '/modifyClosure',
-            type: 'post',
-            data: $('#closuretimes').serialize(),
-            success: function (data) {
-                alert(data);
-            }
-        });
+        if(valid) {
+            $.ajax({
+                url: this.apiUri + '/modifyClosure',
+                type: 'post',
+                data: $('#closuretimes').serialize(),
+                success: function (data) {
+                    alert(data);
+                }
+            });
+        }
     }
     getLocation(){
         $.ajax({
