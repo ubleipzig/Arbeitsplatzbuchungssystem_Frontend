@@ -79,13 +79,14 @@ class Api2 {
             return;
         }
 
-        /*var vw = ""
+        var vw = /^[0-3][0-9][/.][0-3][0-9][/.](?:[0-9][0-9])?[0-9][0-9]$/
 
         d.split(",").forEach(function(e) {
-
+            if(!vw.test(e)) {
+                alert("Fehler in der Datumsangabe!")
+                return;
+            }
         });
-
-        return;*/
 
         $.ajax({
             url: this.apiUri + '/modifyClosure',
