@@ -1,0 +1,29 @@
+<h1>Infektionsnachverfolgung</h1>
+<form id="following">
+    <div class="row">
+        <div class="col"><label for="institutions" class="col-form-label">betreffender Standort:</label></div>
+        <div class="col"><select id="institutions" name="institutions" required="required">
+            <option>Bitte wählen ...</option>
+        </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"><label class="col-form-label" for="readernumber">Bibliotheksnummer der infizierten Person</label></div>
+        <div class="col"><input type="text" name="readernumber" id="readernumber" style="width: 300px;"></div>
+    </div>
+    <div class="row">
+        <div class="col"><label class="col-form-label">Datum</label></div>
+        <div class="col"><input type="date" name="visitdate" id="visitdate"></div></div>
+    </div>
+    <div class="row">
+        <div class="col"><label class="col-form-label" for="seatlist">Liste von Sitzplätzen</label></div>
+        <div class="col"><input type="text" name="seatlist" id="seatlist" style="width: 300px;"></div>
+    </div>
+    <input type="hidden" name="token" id="token"/>
+</form>
+<div id="report"></div>
+<button class="btn btn-primary" id="followrequest" onclick="javascript:api2.followrequest()">Report erzeugen</button>
+<button class="btn btn-primary" onclick="javascript:backtomain()">Zurück zum Menü</button>
+<script>
+    api2.getLocation();
+</script>

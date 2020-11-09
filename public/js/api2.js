@@ -240,6 +240,17 @@ class Api2 {
         $("#existingRules").html("");
         this.loadexistingrules();
     }
+    followrequest(){
+        $("#token").val(api2.token);
+        $.ajax({
+            url: this.apiUri+'/followrequest',
+            type: 'post',
+            data: $('#following').serialize(),
+            success: function (data) {
+                $("#report").html(data);
+            }
+        });
+    }
     editexistingrule(rulename){
         $("#username").val(api2.username);
         $("#token").val(api2.token);
@@ -348,4 +359,8 @@ function specialruleset() {
 function newruleset() {
     $("#newruleset_btn").prop("disabled", true);
     $("#newRuleset").load("newruleset.html");
+}
+
+function follow() {
+    $("#startdiv").load("follow.html");
 }
