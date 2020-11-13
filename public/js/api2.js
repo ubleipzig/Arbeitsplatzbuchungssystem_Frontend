@@ -394,7 +394,7 @@ class Api2 {
 }
 
 // let api2 = new Api2 ("seats.ub.uni-leipzig.de/api/booking");
- let api2 = new Api2 ("localhost:12105/booking");
+ let api2 = new Api2 ("localhost:8001/booking");
 //let api2 = new Api2 ("172.18.85.108:12105/booking");
 
 function clean() {
