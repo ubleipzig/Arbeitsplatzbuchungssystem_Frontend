@@ -6,7 +6,7 @@ class Api2 {
         this.apiUri = this._apiUri();
         this.username = "";
         this.token ="";
-
+        this.adminusers="";
 
     }
     login() {
@@ -18,6 +18,7 @@ class Api2 {
             success: function (data) {
                 if(data.token!="null") {
                     api2.token = data.token;
+                    api2.adminusers = data.msg;
                     $("#startdiv").removeClass("starter-template");
                     $("#startdiv").load("main.html");
                 }
@@ -309,6 +310,19 @@ class Api2 {
                 });
             }
         });
+    }
+    unhide(){
+      var allowed = false;
+      api2.adminusers.split(",").forEach(function (e){
+         if(api2.username==e) allowed = true;
+      });
+
+      if(allowed) {
+          $("#infectionfollowingbtn").css("visibility","visible");
+          $("#closuretimesbtn").css("visibility","visible");
+          $("#specialrulesbtn").css("visibility","visible");
+      }
+
     }
     createnewrule(){
         $("#username").val(api2.username);
