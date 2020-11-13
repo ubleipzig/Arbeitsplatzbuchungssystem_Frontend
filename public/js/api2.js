@@ -160,9 +160,6 @@ class Api2 {
 
                 var specclosuredays = data.specclosuredays;
                 $("#data_scd").val(specclosuredays);
-                //$("#from_time").attr({"min": data.from, "max": data.until, "value": data.from});
-                //$("#until_time").attr({"min": data.from, "max": data.until, "value": data.from});
-                //$("#open").text(data.from+" Uhr -"+data.until+" Uhr");
             }
         });
     }
@@ -393,9 +390,7 @@ class Api2 {
     }
 }
 
-// let api2 = new Api2 ("seats.ub.uni-leipzig.de/api/booking");
- let api2 = new Api2 ("localhost:8001/booking");
-//let api2 = new Api2 ("172.18.85.108:12105/booking");
+let api2 = new Api2 ("localhost:8001/booking");
 
 function clean() {
     $("#rulesetname").css("background-color","#FFFFFF");
