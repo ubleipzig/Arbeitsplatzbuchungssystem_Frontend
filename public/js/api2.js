@@ -354,8 +354,7 @@ function selectbookingplan() {
 }
 
 function selectclosure() {
-    if(api2.username=="freitag") $("#startdiv").load("closure.html");
-    else alert("Sub-System leider nicht verfügbar.");
+    $("#startdiv").load("closure.html");
 }
 
 function mabooking() {
