@@ -78,9 +78,6 @@ class Api {
 
                 $("#open").html(output);
 
-                //$("#from_time").attr({"min": data.from, "max": data.until, "value": data.from});
-                //$("#until_time").attr({"min": data.from, "max": data.until, "value": data.from});
-                //$("#open").text(data.from+" Uhr -"+data.until+" Uhr");
             }
         });
 
@@ -333,9 +330,7 @@ class Api {
     }
 }
 
-// let api = new Api ("seats.ub.uni-leipzig.de/api/booking", "seats.ub.uni-leipzig.de/booking-internal/booking");
- let api = new Api ("localhost:12105/booking", "localhost:12106/booking");
-//let api = new Api ("172.18.85.108:12105/booking", "172.18.85.108:1206/booking");
+let api = new Api ("localhost:8001/booking", "localhost:8002/booking");
 
 function setDateInterval() {
 
