@@ -339,11 +339,78 @@ class Api2 {
     _apiUri() {
         return this.proto + '://' + this.url
     }
+    precontrol() {
+        var selectedItem = $("#rulesettype").val();
+        if(selectedItem==1) //Bibliotheksschließung
+        {
+            clean();
+            $("#rulesetname").css("background-color","#FFB700");
+            $("#institutions").css("background-color","#FFB700");
+            $("#startdate").css("background-color","#FFB700");
+            $("#starttime").css("background-color","#FFB700");
+            $("#enddate").css("background-color","#FFB700");
+            $("#endtime").css("background-color","#FFB700");
+            $("#infotext").css("background-color","#FFB700");
+        }
+        if(selectedItem==2) //Platzblockade
+        {
+            clean();
+            $("#rulesetname").css("background-color","#FFB700");
+            $("#institutions").css("background-color","#FFB700");
+            $("#startdate").css("background-color","#FFB700");
+            $("#starttime").css("background-color","#FFB700");
+            $("#enddate").css("background-color","#FFB700");
+            $("#endtime").css("background-color","#FFB700");
+            $("#workspaceids").css("background-color","#FFB700");
+
+        }
+        if(selectedItem==3) //Bereichsschließung
+        {
+            clean();
+            $("#rulesetname").css("background-color","#FFB700");
+            $("#institutions").css("background-color","#FFB700");
+            $("#startdate").css("background-color","#FFB700");
+            $("#starttime").css("background-color","#FFB700");
+            $("#enddate").css("background-color","#FFB700");
+            $("#endtime").css("background-color","#FFB700");
+            $("#workspaceids").css("background-color","#FFB700");
+            $("#area").css("background-color","#FFB700");
+        }
+        if(selectedItem==4) //Öffnungszeitenänderung
+        {
+            clean();
+            $("#rulesetname").css("background-color","#FFB700");
+            $("#institutions").css("background-color","#FFB700");
+            $("#startdate").css("background-color","#FFB700");
+            $("#starttime").css("background-color","#FFB700");
+            $("#enddate").css("background-color","#FFB700");
+            $("#endtime").css("background-color","#FFB700");
+            $("#infotext").css("background-color","#FFB700");
+            $("#opening").css("background-color","#FFB700");
+            $("#day").css("background-color","#FFB700");
+            $("#closing").css("background-color","#FFB700");
+        }
+    }
 }
 
 // let api2 = new Api2 ("seats.ub.uni-leipzig.de/api/booking");
  let api2 = new Api2 ("localhost:12105/booking");
 //let api2 = new Api2 ("172.18.85.108:12105/booking");
+
+function clean() {
+    $("#rulesetname").css("background-color","#FFFFFF");
+    $("#institutions").css("background-color","#FFFFFF");
+    $("#startdate").css("background-color","#FFFFFF");
+    $("#starttime").css("background-color","#FFFFFF");
+    $("#enddate").css("background-color","#FFFFFF");
+    $("#endtime").css("background-color","#FFFFFF");
+    $("#infotext").css("background-color","#FFFFFF");
+    $("#opening").css("background-color","#FFFFFF");
+    $("#day").css("background-color","#FFFFFF");
+    $("#closing").css("background-color","#FFFFFF");
+    $("#workspaceids").css("background-color","#FFFFFF");
+    $("#area").css("background-color","#FFFFFF");
+}
 
 function checkreservation() {
     $("#startdiv").load("check.html");

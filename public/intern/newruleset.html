@@ -13,7 +13,7 @@
 <div class="row">
     <div class="col"><label class="col-form-label" for="rulesettype">Art der Sonderregel</label></div>
     <div class="col">
-        <select name="rulesettype" id="rulesettype">
+        <select name="rulesettype" id="rulesettype" onchange="javascript:api2.precontrol()">
         <option value="1" selected="">Bibliotheksschließung</option>
         <option value="2">Platzblockade</option>
         <option value="3">Bereichsschließung</option>
@@ -87,4 +87,5 @@
 <button class="btn btn-primary" id="rulebtn" onclick="javascript:api2.createnewrule()">Einrichten</button>
 <script>
     api2.getLocation();
+    api2.precontrol();
 </script>
