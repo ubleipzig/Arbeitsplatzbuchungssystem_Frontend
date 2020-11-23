@@ -330,7 +330,7 @@ class Api {
     }
 }
 
-let api = new Api ("localhost:8001/booking", "localhost:8002/booking");
+let api = new Api ("localhost:8081/booking", "localhost:8082/booking");
 
 function setDateInterval() {
 

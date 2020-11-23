@@ -390,7 +390,7 @@ class Api2 {
     }
 }
 
-let api2 = new Api2 ("localhost:8001/booking");
+let api2 = new Api2 ("localhost:8081/booking");
 
 function clean() {
     $("#rulesetname").css("background-color","#FFFFFF");
